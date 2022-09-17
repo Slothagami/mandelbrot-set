@@ -1,5 +1,7 @@
-# fractals
-Fractal Renderers of various types that I've made, mostly in JavaScript so far, I have plans to at least upgrade to WebGL once I learn how for faster runtimes.
+# Mandlebrot Set Renderers
+Renderers that I've made for the mandlebrot set.
 
-### Wikipedia Pages
+### Relevant Wikipedia Pages
  - [Mandlebrot Set](https://en.wikipedia.org/wiki/Mandelbrot_set)
+ - [Logistic Map](https://en.wikipedia.org/wiki/Logistic_map)
+ - [Complex Numbers](https://en.wikipedia.org/wiki/Complex_number)
