@@ -1,11 +1,11 @@
 import numpy  as np 
 import pygame as pg 
 import sys
-from pygame.locals import *
-from renderND import renderPoint, c
+from pygame.locals import QUIT, KEYDOWN
+from renderer import Color, HyperspaceRenderer
 from math import isnan, isinf, pi
 import os 
-from color import gray, hsv_to_rgb
+from color import hsv_to_rgb
 
 os.chdir(os.path.dirname(__file__))
 
@@ -41,8 +41,9 @@ pg.display.set_caption(rendername)
 width, height = 1024, 650
 center = np.array([width, height]) / 2
 window = pg.display.set_mode((width, height))
+render = HyperspaceRenderer((width, height), window, 4)
 
-window.fill(c.grey)
+window.fill(Color.grey)
 #endregion
 
 r = complex(rrange[0], zrange[0])
@@ -70,7 +71,8 @@ while True:
                 except OverflowError: continue
                 # col = hsv_to_rgb(iteration/layerDetail, .5, .5)
                 # renderPoint(point, viewAngle, window, center, scale, rowColor, 4)
-                renderPoint(point, viewAngle, window, center, scale, col, 4)
+                render.rotation = viewAngle
+                render.point(point, col, 1)
 
             r += rspan / rprec
         r = complex(rrange[0], r.imag)

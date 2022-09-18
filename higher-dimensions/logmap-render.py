@@ -4,7 +4,6 @@ import sys
 from pygame.locals import *
 from render3D import renderPoint, cube, c
 from math import isnan, pi
-from color import gray
 
 def gray(z): 
     value = (z/2 - zrange[0]) / zspan * 255 + 40
