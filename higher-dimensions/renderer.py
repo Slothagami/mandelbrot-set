@@ -3,10 +3,7 @@ from pygifsicle import optimize as optimize_gif
 from math       import sin, cos
 import pygame as pg
 import numpy  as np
-import sys
-import imageio
-
-# TODO: optimize rendering
+import sys, imageio
 
 def rotate_x(a, point):
     rotMatrix = np.identity(len(point))
@@ -82,6 +79,15 @@ class HyperspaceRenderer:
             self.window, color, 
             point * scale + self.center, 
             radius
+        )
+
+    def pixel(self, point, color, scale=1):
+        point = project(point, self.rotation)
+        if point is None: return
+
+        self.window.set_at(
+            (point * scale + self.center).astype(int), 
+            color
         )
 
     def edge(self, a, b, color, thickness=2):
