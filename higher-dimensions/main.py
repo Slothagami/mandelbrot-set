@@ -8,7 +8,8 @@ import sys, os
 
 os.chdir(os.path.dirname(__file__))
 
-def mandlebrot(pop, r): return pop*pop + r 
+def mandlebrot(pop, r):   return pop*pop + r 
+def mandlebrot_4(pop, r): return pop*pop*pop*pop + r 
 def logmap(pop, r): return r * pop * (1 - pop)
 
 def isnum(n):
@@ -50,7 +51,7 @@ def render_map(map):
     if r.imag >= r_imag_range[1]: done = True
 
 params = {
-    "map":                      mandlebrot,
+    "map":                      mandlebrot_4,
     "view_angle":               "overhead",
     "render_density":           300,
     "noise_removal_steps":      100,
@@ -85,7 +86,7 @@ screen_size = 1024, 650
 window = pg.display.set_mode(screen_size)
 render = HyperspaceRenderer(screen_size, window, 4)
 
-window.fill(Color.grey)
+window.fill(Color.dgrey)
 
 r = complex(r_real_range[0], r_imag_range[0])
 while True:

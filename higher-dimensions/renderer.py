@@ -56,6 +56,7 @@ class Color:
     white  = (255, 255, 255)
     dwhite = (150, 150, 150)
     grey   = (32, 32, 32)
+    dgrey   = (16, 16, 16)
     orange = (255, 100, 0)
 
 class HyperspaceRenderer:
