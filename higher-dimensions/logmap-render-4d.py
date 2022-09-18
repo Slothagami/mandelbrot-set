@@ -2,7 +2,6 @@ import numpy  as np
 import pygame as pg 
 import sys
 from pygame.locals import *
-import renderND
 from renderND import renderPoint, c
 from math import isnan, isinf, pi
 import os 
@@ -15,7 +14,7 @@ def isnum(n):
 
 #region Seutp
 startPop      = 0#.5#.5#complex(-.4, 0)#-.4
-noiseRemoval  = 3000#100#45
+noiseRemoval  = 100#3000#100#45
 layerDetail   = 150#200
 scale         = 5.2
 prec          = 500
@@ -88,4 +87,3 @@ while True:
         if e.type == KEYDOWN:
             if e.key == K_a:
                 pg.image.save(window, f"renders/Mandlebrot/{rendername}.jpg")
-

@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import random
 
 fig = plt.figure()
 ax  = fig.add_subplot(111, projection='3d')

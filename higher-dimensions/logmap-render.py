@@ -82,4 +82,3 @@ while True:
         if e.type == KEYDOWN:
             if e.key == K_a:
                 pg.image.save(window, f"renders/3D-Render/{rendername}.jpg")
-

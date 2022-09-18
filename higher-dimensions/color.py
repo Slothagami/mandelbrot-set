@@ -1,3 +1,5 @@
+import numpy as np
+
 def hsv_to_rgb(h, s, v): # takes percent values
     # https://stackoverflow.com/questions/24852345/hsv-to-rgb-color-conversion (Tcll's Answer)
     if s == 0.0: v*=255; return (v, v, v)
