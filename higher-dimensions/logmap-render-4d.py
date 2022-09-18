@@ -1,7 +1,7 @@
 import numpy  as np 
 import pygame as pg 
 import sys
-from pygame.locals import QUIT, KEYDOWN
+from pygame.locals import QUIT, KEYDOWN, K_SPACE
 from renderer import Color, HyperspaceRenderer
 from math import isnan, isinf, pi
 import os 
@@ -87,5 +87,5 @@ while True:
             sys.exit()
 
         if e.type == KEYDOWN:
-            if e.key == K_a:
+            if e.key == K_SPACE:
                 pg.image.save(window, f"renders/Mandlebrot/{rendername}.jpg")
