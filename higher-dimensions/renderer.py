@@ -49,6 +49,7 @@ def project(point, rot):
     while len(point) > 2:
         dist   = 4
         dscale = 1 / (dist - point[-1])
+        if dscale < 0: return
         point  = point[:-1] * dscale # discard last coordinate
 
     return point * scale * depth_scale
@@ -73,10 +74,13 @@ class HyperspaceRenderer:
         self.center      = np.array(screen_size) / 2
         self.rotation    = np.zeros(ndims, dtype=float)
     
-    def point(self, point, color, radius=3):
+    def point(self, point, color, radius=3, scale=1):
+        point = project(point, self.rotation)
+        if point is None: return
+
         pg.draw.circle(
             self.window, color, 
-            project(point, self.rotation) + self.center, 
+            point * scale + self.center, 
             radius
         )
 
