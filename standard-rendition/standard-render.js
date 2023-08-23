@@ -28,19 +28,34 @@ var pos = new Complex(0,0),
     yrange,
     colorSpread = 1
 
+const CONTROLS = [
+    "WASD: Move View",
+    "+-: Zoom",
+    "[]: Change Depth Value",
+    "Space: Cycle Projection Types",
+    "Alt: Cycle Set Types",
+    "IJKL: Move Julia Seed", 
+    "OP: Change Set Power",
+    "--"
+].join("\n")
+
 // Program
 function init() {
     // Controls
-    console.log([
-        "WASD: Move View",
-        "+-: Zoom",
-        "[]: Change Depth Value",
-        "Space: Cycle Projection Types"
-    ].join("\n"))
+    console.log(CONTROLS)
 
     window.addEventListener("keydown", e => {
         console.log(e.key)
         switch(e.key) {
+            // order
+            case "p": mandlebrotOrder++; break
+            case "o": mandlebrotOrder--; break
+
+            case "Alt":
+                if( func == mandlebrot ) {
+                    func = julia
+                } else {func = mandlebrot}
+
             // Zoom
             case "=": // +
                 xrange *= zoomFactor
@@ -77,6 +92,24 @@ function init() {
                 // colorPerPoint(func, interpret)
                 break
 
+
+            //Move Julia Seed
+            case "i":
+                juliaSeed = Complex.add(juliaSeed, new Complex(0, -.01))
+                break
+
+            case "j":
+                juliaSeed = Complex.add(juliaSeed, new Complex(-.01, 0))
+                break
+
+            case "k":
+                juliaSeed = Complex.add(juliaSeed, new Complex(0, .01))
+                break
+
+            case "l":
+                juliaSeed = Complex.add(juliaSeed, new Complex(.01, 0))
+                break
+
             // case "q":
             //     colorPerPoint(func, interpret)
             //     break
@@ -107,10 +140,12 @@ function init() {
             "Coloring: " + interpret,
             "Set Power: " + mandlebrotOrder,
             "Position: " + pos.toString(),
-            // "Julia Seed: " + juliaSeed.toString(),
+            "Set Type: " + func.name,
+            "Julia Seed: " + juliaSeed.toString(),
             "Depth: " + depth,
             "Viewport Width: " + xrange
         ].join("\n"))
+        console.log(CONTROLS)
     })
 
     scrRatio = canv.height / canv.width,
