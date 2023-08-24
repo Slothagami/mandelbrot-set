@@ -33,7 +33,7 @@ const CONTROLS = [
     "+-: Zoom",
     "[]: Change Depth Value",
     "Space: Cycle Projection Types",
-    "Alt: Cycle Set Types",
+    "C: Cycle Set Types",
     "IJKL: Move Julia Seed", 
     "OP: Change Set Power",
     "--"
@@ -51,10 +51,14 @@ function init() {
             case "p": mandlebrotOrder++; break
             case "o": mandlebrotOrder--; break
 
-            case "Alt":
+            case "c":
                 if( func == mandlebrot ) {
                     func = julia
-                } else {func = mandlebrot}
+                    juliaSeed = pos
+                } else {
+                    func = mandlebrot
+                    pos = juliaSeed
+                }
 
             // Zoom
             case "=": // +
